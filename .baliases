@@ -22,7 +22,7 @@ alias ld='ls -d .*'
 
 # bash:
 alias b='v ~/.bashrc'
-alias ba='v ~/dotfiles/.bash_aliases'
+alias ba='v ~/dotfiles/.baliases'
 alias sb='source ~/.bashrc'
 
 alias clc='clear'
@@ -56,4 +56,4 @@ alias v='vim'
 alias vclc='rm -r ~/.vim/dirs/tmp/'
 
 # tmux sessions (mój skrypt)
-alias ts='. ~/skrypty/tmux_session_runner'
+alias ts='. ~/scripts/tmux_session_runner'

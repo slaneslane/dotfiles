@@ -1,0 +1,59 @@
+# Alias definitions.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# handy aliases
+alias ls='ls --color=auto'
+#alias dir='dir --color=auto'
+#alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ld='ls -d .*'
+
+# bash:
+alias b='v ~/.bashrc'
+alias ba='v ~/dotfiles/.bash_aliases'
+alias sb='source ~/.bashrc'
+
+alias clc='clear'
+
+# python3 aliases:
+alias python='python3'
+alias pip='pip3'
+
+# django related aliases:
+alias drs='python3 manage.py runserver'
+alias dt='python3 manage.py test'
+
+# virtualenv related aliases:
+alias va='sl && source virtualenv/bin/activate'
+alias vd='deactivate'
+
+# git related aliases:
+alias gk='gitk'
+alias gs='git status'
+alias gd='git diff'
+alias glg='git log --oneline --graph --decorate --all'
+
+# my projects directory related aliases:
+alias sl='cd ~/Projects/superlists/'
+
+# virtualenv for programs:
+alias val='va && la' 
+
+# vim:
+alias v='vim'
+alias vclc='rm -r ~/.vim/dirs/tmp/'
+
+# tmux sessions (mój skrypt)
+alias ts='. ~/skrypty/tmux_session_runner'

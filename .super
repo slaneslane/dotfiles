@@ -1,7 +1,7 @@
 # Powerline:
-#if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-#    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-#fi
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
 
 # ** Uruchomienie skryptu programów **
 # Nowy skrypt odpalający sesje w tmux:

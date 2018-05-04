@@ -57,3 +57,4 @@ alias vclc='rm -r ~/.vim/dirs/tmp/'
 
 # tmux sessions (mój skrypt)
 alias ts='. ~/scripts/tmux_session_runner'
+alias nts='. ~/scripts/new_tmux_session_runner'

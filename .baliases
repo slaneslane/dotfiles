@@ -36,7 +36,7 @@ alias drs='python3 manage.py runserver'
 alias dt='python3 manage.py test'
 
 # virtualenv related aliases:
-alias va='sl && source virtualenv/bin/activate'
+alias va='source virtualenv/bin/activate'
 alias vd='deactivate'
 
 # git related aliases:
@@ -58,6 +58,9 @@ alias vclc='rm -r ~/.vim/dirs/tmp/'
 # tmux sessions (mój skrypt)
 alias ts='. ~/scripts/tmux_session_runner'
 alias nts='. ~/scripts/new_tmux_session_runner'
+
+# running projects:
+alias pr='. ~/scripts/projects_runner'
 
 # pbcopy & pbpaste for ssh:
 alias pbcopy="xclip -selection clipboard"

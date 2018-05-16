@@ -15,9 +15,6 @@ shopt -s checkwinsize
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# Use mouse!
-set mouse=a
-
 # Activate vim mode with <ESC>
 set -o vi
 set editing-mode vi

@@ -16,8 +16,8 @@ shopt -s checkwinsize
 shopt -s cdspell;
 
 # Activate vim mode with <ESC>
-set -o vi
-set editing-mode vi
+#set -o vi
+#set editing-mode vi
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.

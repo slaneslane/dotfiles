@@ -1,5 +1,7 @@
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
+execute pathogen#infect()
+
 " Fisa-vim-config
 " http://fisadev.github.io/fisa-vim-config/
 " version: 8.3.1
@@ -152,6 +154,9 @@ autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " always show status bar
 set ls=2
+
+" always show statusline
+set laststatus=2
 
 " incremental search
 set incsearch

@@ -93,6 +93,8 @@ Plug 'scrooloose/syntastic'
 Plug 'lilydjwg/colorizer'
 " Ack code search (requires ack installed in the system)
 Plug 'mileszs/ack.vim'
+" TypeScript-vim syntax
+Plug 'leafgarland/typescript-vim'
 if has('python')
     " YAPF formatter for Python
     Plug 'pignacio/vim-yapf-format'

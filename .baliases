@@ -37,7 +37,9 @@ alias dt='python3 manage.py test'
 
 # virtualenv related aliases:
 alias va='source virtualenv/bin/activate'
+alias val='va && la'
 alias vd='deactivate'
+alias vcal='python3 -m venv virtualenv && va && pip install --upgrade pip && la' # create virtualenv & upgrade pip & activate & list directory
 
 # git related aliases:
 alias gk='gitk'
@@ -47,9 +49,6 @@ alias glg='git log --oneline --graph --decorate --all'
 
 # my projects directory related aliases:
 alias sl='cd ~/Projects/superlists/'
-
-# virtualenv for programs:
-alias val='va && la' 
 
 # vim:
 alias v='vim'
@@ -65,3 +64,12 @@ alias pr='. ~/scripts/projects_runner'
 # pbcopy & pbpaste for ssh:
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
+
+# aliases for TT:
+alias brs='cd ~/Projects/brs-django/ && va && la'
+
+# find files containing string:
+alias ff='find . -type f -print0 | xargs -0 grep -l'
+
+# Udemy:
+alias udemy='cd ~/Projects/Nauka/Udemy/'

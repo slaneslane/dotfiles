@@ -97,6 +97,8 @@ Plug 'lilydjwg/colorizer'
 Plug 'mileszs/ack.vim'
 " TypeScript-vim syntax
 Plug 'leafgarland/typescript-vim'
+" TSX-vim syntax
+Plug 'peitalin/vim-jsx-typescript'
 if has('python')
     " YAPF formatter for Python
     Plug 'pignacio/vim-yapf-format'
@@ -171,8 +173,30 @@ set mouse=a
 " syntax highlight on
 syntax on
 
+" autoreload changed files
+set autoread
+
 " show line numbers
 set nu
+
+" TYPESCRIPT, TSX & JSX
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" BEGINNING OF TYPESCRIPT & TSX COLORS SECTIONS
+" dark red
+hi tsxTagName guifg=#E06C75
+
+" orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+" END OF TYPESCRIPT & TSX COLORS SECTIONS
+
 
 " tab navigation mappings
 map tn :tabn<CR>

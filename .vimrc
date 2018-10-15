@@ -99,6 +99,8 @@ Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
 " TSX-vim syntax
 Plug 'peitalin/vim-jsx-typescript'
+" Asynchronous Lint Engine
+Plug 'w0rp/ale'
 if has('python')
     " YAPF formatter for Python
     Plug 'pignacio/vim-yapf-format'
@@ -150,9 +152,11 @@ set softtabstop=4
 set shiftwidth=4
 
 " tab length exceptions on some file types
-autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " always show status bar
 set ls=2
@@ -182,21 +186,6 @@ set nu
 " TYPESCRIPT, TSX & JSX
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-" BEGINNING OF TYPESCRIPT & TSX COLORS SECTIONS
-" dark red
-hi tsxTagName guifg=#E06C75
-
-" orange
-hi tsxCloseString guifg=#F99575
-hi tsxCloseTag guifg=#F99575
-hi tsxAttributeBraces guifg=#F99575
-hi tsxEqual guifg=#F99575
-
-" yellow
-hi tsxAttrib guifg=#F8BD7F cterm=italic
-" END OF TYPESCRIPT & TSX COLORS SECTIONS
-
 
 " tab navigation mappings
 map tn :tabn<CR>

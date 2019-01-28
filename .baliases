@@ -32,20 +32,34 @@ alias python='python3'
 alias pip='pip3'
 
 # django related aliases:
-alias drs='python3 manage.py runserver'
-alias dt='python3 manage.py test'
+alias drs='python manage.py runserver'
+alias dt='python manage.py test'
+alias dmm='python manage.py makemigrations'
+alias dm='python manage.py migrate'
 
 # virtualenv related aliases:
 alias va='source virtualenv/bin/activate'
 alias val='va && la'
 alias vd='deactivate'
-alias vcal='python3 -m venv virtualenv && va && pip install --upgrade pip && la' # create virtualenv & upgrade pip & activate & list directory
+# create virtualenv & upgrade pip & activate & list directory:
+alias vcal='python -m venv virtualenv && va && pip install --upgrade pip && la'
 
 # git related aliases:
 alias gk='gitk'
 alias gs='git status'
 alias gd='git diff'
+alias gb='git branch'
+alias gco='git checkout'
+alias gcm='git commit'
+alias gpl='git pull'
+alias gps='git push'
 alias glg='git log --oneline --graph --decorate --all'
+# git stash related aliases:
+alias gsl='git stash list'
+alias gss='git stash save'
+alias gsa='git stash apply'
+alias gsd='git stash drop'
+alias gsc='git stash clear'
 
 # my projects directory related aliases:
 alias sl='cd ~/Projects/superlists/'
@@ -54,19 +68,19 @@ alias sl='cd ~/Projects/superlists/'
 alias v='vim'
 alias vclc='rm -r ~/.vim/dirs/tmp/'
 
-# tmux sessions (mój skrypt)
+# tmux sessions (scripts)
 alias ts='. ~/scripts/tmux_session_runner'
 alias nts='. ~/scripts/new_tmux_session_runner'
 
-# running projects:
+# running projects (scripts):
 alias pr='. ~/scripts/projects_runner'
+
+# web debugging server:
+alias wdb='wdb.server.py'
 
 # pbcopy & pbpaste for ssh:
 alias pbcopy="xclip -selection clipboard"
 alias pbpaste="xclip -selection clipboard -o"
-
-# aliases for TT:
-alias brs='cd ~/Projects/brs-django/ && va && la'
 
 # find files containing string:
 alias ff='find . -type f -print0 | xargs -0 grep -l'

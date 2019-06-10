@@ -28,7 +28,7 @@ alias sb='source ~/.bashrc'
 alias clc='clear'
 
 # python3 aliases:
-alias python='python3'
+alias python='python3.6'
 alias pip='pip3'
 
 # django related aliases:
@@ -42,7 +42,7 @@ alias va='source virtualenv/bin/activate'
 alias val='va && la'
 alias vd='deactivate'
 # create virtualenv & upgrade pip & activate & list directory:
-alias vcal='python -m venv virtualenv && va && pip install --upgrade pip && la'
+alias vcal='python -m venv virtualenv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
 
 # git related aliases:
 alias gk='gitk'
@@ -85,5 +85,8 @@ alias pbpaste="xclip -selection clipboard -o"
 # find files containing string:
 alias ff='find . -type f -print0 | xargs -0 grep -l'
 
+# find and remove all __pycache__ *.pyc and *.pyo files:
+alias rmpyc='find . | egrep "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf' 
+
 # Udemy:
-alias udemy='cd ~/Projects/Nauka/Udemy/'
+alias udemy='cd ~/Projects/nauka/udemy/'

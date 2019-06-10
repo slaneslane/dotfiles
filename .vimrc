@@ -1,6 +1,5 @@
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
-execute pathogen#infect()
+"set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
+"execute pathogen#infect()
 
 " Fisa-vim-config
 " http://fisadev.github.io/fisa-vim-config/
@@ -249,7 +248,13 @@ set backup                        " make backup files
 set backupdir=~/.vim/dirs/backups " where to put backup files
 set undofile                      " persistent undos - undo after you re-open the file
 set undodir=~/.vim/dirs/undos
-set viminfo+=n~/.vim/dirs/viminfo
+if !has('nvim')
+  set viminfo+=n~/vim/viminfo
+else
+  " Do nothing here to use the neovim default
+  " or do soemething like:
+  " set viminfo+=n~/.shada
+endif
 " store yankring history file there too
 let g:yankring_history_dir = '~/.vim/dirs/'
 

@@ -123,7 +123,7 @@ Plug 'vim-scripts/Wombat'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
 " Python mode stuff
-Plugin 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()

@@ -78,7 +78,11 @@ Plug 'tomtom/tlib_vim'
 Plug 'honza/vim-snippets'
 Plug 'garbas/vim-snipmate'
 " Git/mercurial/others diff icons on the side of the file lines
-Plug 'mhinz/vim-signify'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 " Automatically sort python imports
 Plug 'fisadev/vim-isort'
 " Drag visual blocks arround
@@ -118,6 +122,8 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/Wombat'
 " Yank history navigation
 Plug 'vim-scripts/YankRing.vim'
+" Python mode stuff
+Plugin 'python-mode/python-mode'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()

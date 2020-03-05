@@ -124,6 +124,8 @@ Plug 'vim-scripts/Wombat'
 Plug 'vim-scripts/YankRing.vim'
 " Python mode stuff
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+" Vim + tmux focus event integration
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()

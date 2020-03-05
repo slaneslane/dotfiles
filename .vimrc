@@ -1,9 +1,9 @@
-"set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
-"execute pathogen#infect()
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
-" Fisa-vim-config
+" partialy based on Fisa-vim-config
 " http://fisadev.github.io/fisa-vim-config/
-" version: 8.3.1
 
 " ============================================================================
 " Vim-plug initialization
@@ -54,9 +54,6 @@ Plug 'mattn/emmet-vim'
 Plug 'motemen/git-vim'
 " Tab list panel
 Plug 'kien/tabman.vim'
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " Terminal Vim with 256 colors colorscheme
 Plug 'fisadev/fisa-vim-colorscheme'
 " Consoles as buffers
@@ -423,34 +420,15 @@ nmap  -  <Plug>(choosewin)
 " show big letters
 let g:choosewin_overlay_enable = 1
 
-" Airline ------------------------------
-
-let g:airline_powerline_fonts = 0
-let g:airline_theme = 'bubblegum'
-let g:airline#extensions#whitespace#enabled = 0
-
-" to use fancy symbols for airline, uncomment the following lines and use a
-" patched font (more info on the README.rst)
-"if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-"endif
-"let g:airline_left_sep = '⮀'
-"let g:airline_left_alt_sep = '⮁'
-"let g:airline_right_sep = '⮂'
-"let g:airline_right_alt_sep = '⮃'
-"let g:airline_symbols.branch = '⭠'
-"let g:airline_symbols.readonly = '⭤'
-"let g:airline_symbols.linenr = '⭡'
-
 " ====================================
 " My Mapping
 " - for python and django:
 " runserver:
-map <F5> :!python3 manage.py runserver<CR>
+"map <F5> :!python3 manage.py runserver<CR>
 " all tests:
-map <F7> :!python3 manage.py test<CR>
+"map <F7> :!python3 manage.py test<CR>
 " unit tests only:
-map <F8> :!python3 manage.py test lists<CR>
+"map <F8> :!python3 manage.py test lists<CR>
 " functional tests only:
-map <F9> :!python3 manage.py test functional_tests<CR>
+"map <F9> :!python3 manage.py test functional_tests<CR>
 " ====================================

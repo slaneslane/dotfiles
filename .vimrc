@@ -304,6 +304,7 @@ map <F3> :NERDTreeToggle<CR>
 nmap ,t :NERDTreeFind<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+let NERDTreeShowHidden=1
 
 " Tasklist ------------------------------
 

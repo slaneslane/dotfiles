@@ -178,6 +178,13 @@ set smartcase
 " mouse on
 set mouse=a
 
+" copy to system clipboard
+set clipboard=unnamedplus
+
+" Prevent x from overriding what's in the clipboard.
+noremap x "_x
+noremap X "_x
+
 " syntax highlight on
 syntax on
 

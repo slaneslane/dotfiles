@@ -73,6 +73,9 @@ alias vclc='rm -r ~/.vim/dirs/tmp/'
 alias ts='. ~/scripts/tmux_session_runner'
 alias nts='. ~/scripts/new_tmux_session_runner'
 
+# create file backup
+alias backup='. ~/scripts/backup'
+
 # running projects (scripts):
 alias pr='. ~/scripts/projects_runner'
 

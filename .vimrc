@@ -148,7 +148,7 @@ Plug 'romainl/vim-cool'
 " Installing work only through bundle (check plugin web page)
 "Plug 'tell-k/vim-autopep8'
 " Powerline
-Plug 'Lokaltog/powerline'
+"Plug 'Lokaltog/powerline'
 
 if using_vim
     " Consoles as buffers (neovim has its own consoles as buffers)

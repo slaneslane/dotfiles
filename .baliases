@@ -29,7 +29,8 @@ alias clc='clear'
 
 # python3 aliases:
 alias python='python3.6'
-alias pip='pip3'
+alias pip='pip3.6'
+alias py='python'
 
 # django related aliases:
 alias drs='python manage.py runserver'
@@ -38,12 +39,12 @@ alias dmm='python manage.py makemigrations'
 alias dm='python manage.py migrate'
 
 # virtualenv related aliases:
-alias va='source virtualenv/bin/activate'
+alias va='source venv/bin/activate'
 alias val='va && la'
 alias vd='deactivate'
 # create virtualenv & upgrade pip & activate & list directory:
-alias vcal='python -m venv virtualenv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
-alias vcal2='python2.7 -m venv virtualenv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
+alias vcal='python -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
+alias vcal2='python2.7 -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
 
 # git related aliases:
 alias gk='gitk'
@@ -94,3 +95,28 @@ alias rmpyc='find . | egrep "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 
 # Udemy:
 alias udemy='cd ~/Projects/nauka/udemy/'
+
+# TTAS/ASCP:
+# jenkins / test machine:
+alias sshtest="ssh ascp@192.168.58.117"
+alias dbascp="mysql --host=192.168.58.117 --protocol=tcp --port=3306 --user=root --password=root"
+# basic rest -> EDS connection:
+alias br1="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3050 --user admin"
+alias br2="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3053 --user admin"
+alias br3="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3055 --user admin"
+# frontend:
+alias aw="cd ~/ASCP/ascp/web/src && npm start"
+alias web="cd ~/ASCP && va && cd ascp/web/src && la && gs && gb"
+alias taf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/TemplateApp && la && gs && gb"
+alias edsf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/Eds && la && gs && gb"
+alias wmsf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/Wms && la && gs && gb"
+# backend:
+alias as="cd ~/ASCP && va && cd ascp/server/ && py manage.py runserver"
+alias dj="cd ~/ASCP && va && cd ascp/server/ && la && gs && gb"
+alias tab="cd ~/ASCP/ascp/server/installed/template_app && la && gs && gb"
+alias wmsb="cd ~/ASCP && va && cd ascp/server/installed/wms && la && gs && gb"
+alias wmsb="cd ~/ASCP && va && cd ascp/server/installed/wms && la && gs && gb"
+# redis:
+alias red="sudo docker run -p 6379:6379 -d redis:2.8 --requirepass Admin123!"
+
+

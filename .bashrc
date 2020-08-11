@@ -72,3 +72,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export DJANGO_SUPERUSER_USERNAME='admin'
+export DJANGO_SUPERUSER_PASSWORD='admin'
+export DJANGO_SUPERUSER_EMAIL='admin@ascp.pl'
+export JENKINS_ENV='true'

@@ -101,21 +101,15 @@ alias udemy='cd ~/Projects/nauka/udemy/'
 alias sshtest="ssh ascp@192.168.58.117"
 alias dbascp="mysql --host=192.168.58.117 --protocol=tcp --port=3306 --user=root --password=root"
 # basic rest -> EDS connection:
-alias br1="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3050 --user admin"
-alias br2="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3053 --user admin"
-alias br3="cd ~/ASCP && va && cd ascp/services/rest_webapi && py basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3055 --user admin"
+alias br1="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3050 --user admin"
+alias br2="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3053 --user admin"
+alias br3="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3055 --user admin"
+# backend
+alias dj="cd ~/ascp/server && la && gs && gb"
+alias as="cd ~/ascp/server && pipenv run python manage.py runserver"
 # frontend:
-alias aw="cd ~/ASCP/ascp/web/src && npm start"
-alias web="cd ~/ASCP && va && cd ascp/web/src && la && gs && gb"
-alias taf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/TemplateApp && la && gs && gb"
-alias edsf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/Eds && la && gs && gb"
-alias wmsf="cd ~/ASCP && va && cd ascp/web/src/applications/installed/Wms && la && gs && gb"
-# backend:
-alias as="cd ~/ASCP && va && cd ascp/server/ && py manage.py runserver"
-alias dj="cd ~/ASCP && va && cd ascp/server/ && la && gs && gb"
-alias tab="cd ~/ASCP/ascp/server/installed/template_app && la && gs && gb"
-alias wmsb="cd ~/ASCP && va && cd ascp/server/installed/wms && la && gs && gb"
-alias wmsb="cd ~/ASCP && va && cd ascp/server/installed/wms && la && gs && gb"
+alias aw="cd ~/ascp/web/src && npm start"
+alias web="cd ~/web/src && la && gs && gb"
 # redis:
 alias red="sudo docker run -p 6379:6379 -d redis:2.8 --requirepass Admin123!"
 

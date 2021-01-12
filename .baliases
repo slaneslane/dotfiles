@@ -6,6 +6,9 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # handy aliases
+alias cp='/usr/local/bin/cp -gR'
+alias mv='/usr/local/bin/mv -g'
+
 alias ls='ls --color=auto'
 #alias dir='dir --color=auto'
 #alias vdir='vdir --color=auto'
@@ -42,9 +45,18 @@ alias dm='python manage.py migrate'
 alias va='source venv/bin/activate'
 alias val='va && la'
 alias vd='deactivate'
+alias pes='pipenv shell'
+alias per='pipenv run'
 # create virtualenv & upgrade pip & activate & list directory:
 alias vcal='python -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
 alias vcal2='python2.7 -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
+
+# pipenv 3.6 to 3.8 aliases for ascp:
+alias p36='cd ~/ascp && find . -type f -name Pipfile | xargs sed -i "s/python_version = \"3.8\"/python_version = \"3.6\"/" && sed -i "s/\"3.8\"/\"3.6\"/" devops/scripts/prepare_pipenv.py'
+alias p38='cd ~/ascp && find . -type f -name Pipfile | xargs sed -i "s/python_version = \"3.6\"/python_version = \"3.8\"/" && sed -i "s/\"3.6\"/\"3.8\"/" devops/scripts/prepare_pipenv.py'
+
+# pytest coverage:
+alias rmcov='find . -type f -name "*,cover" | xargs rm'
 
 # git related aliases:
 alias gk='gitk'
@@ -106,11 +118,14 @@ alias br2="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --u
 alias br3="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3055 --user admin"
 # backend
 alias dj="cd ~/ascp/server && la && gs && gb"
+alias mig="cd ~/ascp/server && pipenv run python manage.py migrate"
 alias as="cd ~/ascp/server && pipenv run python manage.py runserver"
 # frontend:
+alias web="cd ~/ascp/web/src && la && gs && gb"
 alias aw="cd ~/ascp/web/src && npm start"
-alias web="cd ~/web/src && la && gs && gb"
 # redis:
 alias red="sudo docker run -p 6379:6379 -d redis:2.8 --requirepass Admin123!"
 
 
+#find . -type f -name Pipfile | xargs sed -i 's/python_version = "3.6"/python_version = "3.8"/'
+#sed -i 's/"3.6"/"3.8"/' devops/scripts/prepare_pipenv.py

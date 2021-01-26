@@ -13,6 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Powerline
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" ACK -> grep for programmers
+Plugin 'mileszs/ack.vim'
+
 " Super searching
 Plugin 'ctrlpvim/ctrlp.vim'
 " File browsing
@@ -46,6 +49,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 " Auto correction python code to pep8
 Plugin 'tell-k/vim-autopep8'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,6 +100,10 @@ set encoding=utf-8
 
 " save as sudo
 ca w!! w !sudo tee "%"
+
+" better copy-paste (F2)
+set pastetoggle=<F2>
+set clipboard=unnamed
 
 " always show status bar
 set ls=2
@@ -154,6 +162,17 @@ set hlsearch
 nnoremap <silent> <CR> :noh<CR><CR>
 
 
+" ctrlP don't show those file types
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*.pyo
+
+
+" ACK options
+nmap <leader>a <Esc>:Ack!
+let g:ack_autoclose = 1
+
+
 "" SPLITS -> TABS, BUFFERS, etc:
 " not a default area of opened splits
 set splitbelow
@@ -177,6 +196,7 @@ nnoremap <C-H> <C-W><C-H>
 " Gitgutter:
 au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
 noremap <Leader>c :GitGutterToggle<CR>
+let g:gitgutter_enabled = 0
 let g:gitgutter_highlight_lines = 1
 " You can jump between hunks with [c and ]c.
 " You can preview hunks with <leader>hp
@@ -215,7 +235,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar instead pressing za (might be in conflict with leader)
-"nnoremap <space> za
+nnoremap , za
 " options for SimpleFold plugin:
 let g:SimpylFold_docstring_preview = 1
 

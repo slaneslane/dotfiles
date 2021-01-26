@@ -25,13 +25,14 @@ Plugin 'tpope/vim-vinegar'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
-" Vim-Gitgutter
-" https://github.com/airblade/vim-gitgutter
+" Vim-Gitgutter (https://github.com/airblade/vim-gitgutter)
 Plugin 'airblade/vim-gitgutter'
 " Git/mercurial/others diff icons on the side of the file lines - more simple than gitgutter
 "Plugin 'mhinz/vim-signify'
 
 
+" Python autocompletion, go to definition.
+Plugin 'davidhalter/jedi-vim'
 " Autocomplete
 "Plugin 'Valloric/YouCompleteMe'
 
@@ -235,7 +236,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar instead pressing za (might be in conflict with leader)
-nnoremap , za
+"nnoremap , za
 " options for SimpleFold plugin:
 let g:SimpylFold_docstring_preview = 1
 
@@ -298,14 +299,42 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 
+" Jedi-vim (python only)
+" ctrl + space => autocomplete
+" shift + K => documentation
+" Go to definition
+let g:jedi#goto_command = ',d'
+" Find ocurrences
+let g:jedi#usages_command = ',o'
+" Find assignments
+let g:jedi#goto_assignments_command = ',a'
+" Go to definition in new tab
+nnoremap ,D :tab split<CR>:call jedi#goto()<CR>
+
+
+" Autocomplete
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+" Add the virtualenv's site-packages to vim path
+if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+endif
+
+
 "" PYTHON SNIPPETS:
 " Ability to add python breakpoints
 " (I use ipdb, but you can change it to whatever tool you use for debugging)
 au FileType python map <silent> <leader>p Oimport pdb; pdb.set_trace()<esc>
 au FileType python map <silent> <leader>w Oimport wdb; wdb.set_trace()<esc>
 au FileType python map <silent> <leader>b Oimport ipdb; ipdb.set_trace()<esc>
-
-
-" Autocomplete
-"let g:ycm_autoclose_preview_window_after_completion=1
-"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>

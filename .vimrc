@@ -103,6 +103,9 @@ set ls=2
 " faster update (default = 4000 -> 4 sec)
 set updatetime=100
 
+"color scheme:
+colorscheme torte
+
 
 "" LINES NUMBERING:
 " turn relative line numbers on
@@ -173,6 +176,8 @@ nnoremap <C-H> <C-W><C-H>
 "" GIT
 " Gitgutter:
 au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
+noremap <Leader>c :GitGutterToggle<CR>
+let g:gitgutter_highlight_lines = 1
 " You can jump between hunks with [c and ]c.
 " You can preview hunks with <leader>hp
 " You can stage hunks with <leader>hs

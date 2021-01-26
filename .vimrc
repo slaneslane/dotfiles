@@ -22,6 +22,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'jistr/vim-nerdtree-tabs' " no longer supported!
 Plugin 'tpope/vim-vinegar'
+" Search results counter
+Plugin 'vim-scripts/IndexedSearch'
 
 " Git integration
 Plugin 'tpope/vim-fugitive'
@@ -50,6 +52,46 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 " Auto correction python code to pep8
 Plugin 'tell-k/vim-autopep8'
+
+
+" Tagbar
+Plugin 'preservim/tagbar'
+
+" Pending tasks list (like TODO)
+Plugin 'fisadev/FixedTaskList.vim'
+
+" Tab management
+Plugin 'kien/tabman.vim'
+
+" Consoles as buffers
+Plugin 'rosenfeld/conque-term'
+
+" Window chooser
+Plugin 't9md/vim-choosewin'
+
+" Autoclose
+Plugin 'Townk/vim-autoclose'
+
+" Indent text object (https://github.com/michaeljsmith/vim-indent-object)
+Plugin 'michaeljsmith/vim-indent-object'
+
+" Indentation based movements (https://github.com/jeetsukumaran/vim-indentwise)
+Plugin 'jeetsukumaran/vim-indentwise'
+
+
+"" HTML & CSS related plugins:
+" Surround (https://github.com/tpope/vim-surround)
+Plugin 'tpope/vim-surround'
+
+" HTML completion (https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
+Plugin 'mattn/emmet-vim'
+
+" Paint CSS colors with the real color
+Plugin 'lilydjwg/colorizer'
+
+" XML/HTML tags navigation
+"Plugin 'vim-scripts/matchit.zip'
+Plugin 'https://github.com/adelarsq/vim-matchit'
 
 
 " All of your Plugins must be added before the following line
@@ -127,6 +169,16 @@ set number relativenumber
 :augroup END
 
 
+" no lines wrapping (anyway: gq -> wrap line)
+set tw=119
+set nowrap
+set fo-=t
+
+" color column of max code line length
+set colorcolumn=120
+highlight ColorColumn ctermbg=233
+
+
 " set vim leader to space
 map <Space> <Leader>
 
@@ -163,14 +215,22 @@ set hlsearch
 nnoremap <silent> <CR> :noh<CR><CR>
 
 
-" ctrlP don't show those file types
+" CtrlP
+" don't change working directory
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*.pyo
+" don't show those file types
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
+  \ 'file': '\.pyc$\|\.pyo$',
+  \ }
+" file finder mapping
+"let g:ctrlp_map = '<space> e'
 
 
 " ACK options
-nmap <leader>a <Esc>:Ack!
+nnoremap <leader>a <Esc>:Ack!
+"nnoremap <leader>ra :Ack <cword><CR>
 let g:ack_autoclose = 1
 
 
@@ -249,6 +309,8 @@ syntax on
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+nmap <leader>e :Errors<CR>
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
@@ -341,3 +403,35 @@ endif
 au FileType python map <silent> <leader>p Oimport pdb; pdb.set_trace()<esc>
 au FileType python map <silent> <leader>w Oimport wdb; wdb.set_trace()<esc>
 au FileType python map <silent> <leader>b Oimport ipdb; ipdb.set_trace()<esc>
+
+
+"" EXTRAS:
+" Tagbar (F4)
+noremap <F4> :TagbarToggle<CR>
+" autofocus on tagbar open
+let g:tagbar_autofocus = 1
+
+
+" Tasklist
+" show pending tasks list
+map <F5> :TaskList<CR>
+
+
+" Tabman
+"Press <leader>mt or run :TMToggle to toggle TabMan.
+"Press <leader>mf or run :TMFocus to give focus to/open the TabMan window.
+
+" Congue Term
+" :ConqueTermSplit python
+" :ConqueTerm bash
+" :ConqueTermSplit mysql -h localhost -u joe -p sock_collection
+" :ConqueTermVSplit C:\Python27\python.exe
+noremap <Leader>python :ConqueTermSplit python3<CR>
+noremap <Leader>bash :ConqueTermSplit bash<CR>
+
+" Windows Chooser invoke with '-'
+nmap  -  <Plug>(choosewin)
+
+" Autoclose
+" Fix to let ESC work as espected with Autoclose plugin
+let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}

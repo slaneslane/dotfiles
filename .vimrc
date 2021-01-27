@@ -13,6 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Powerline
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
+" GruvBox colorscheme
+Plugin 'liushapku/vim-colorschemes-gruvbox' 
+
 " ACK -> grep for programmers
 Plugin 'mileszs/ack.vim'
 
@@ -29,8 +32,6 @@ Plugin 'vim-scripts/IndexedSearch'
 Plugin 'tpope/vim-fugitive'
 " Vim-Gitgutter (https://github.com/airblade/vim-gitgutter)
 Plugin 'airblade/vim-gitgutter'
-" Git/mercurial/others diff icons on the side of the file lines - more simple than gitgutter
-"Plugin 'mhinz/vim-signify'
 
 
 " Python autocompletion, go to definition.
@@ -154,9 +155,6 @@ set ls=2
 " faster update (default = 4000 -> 4 sec)
 set updatetime=100
 
-"color scheme:
-colorscheme torte
-
 
 "" LINES NUMBERING:
 " turn relative line numbers on
@@ -175,7 +173,7 @@ set nowrap
 set fo-=t
 
 " color column of max code line length
-set colorcolumn=120
+au BufNewFile,BufRead *.py set colorcolumn=120
 highlight ColorColumn ctermbg=233
 
 
@@ -188,6 +186,13 @@ map <Space> <Leader>
 set mouse=a
 " when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3
+
+
+"" Colorscheme:
+"colorscheme torte " -> one of the defult colorschema
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark = 'soft' " -> hard/medium/soft
 
 
 "" NERDTree (R -> refresh) -> press F3 to open (t -> open in new tab, o -> open here)

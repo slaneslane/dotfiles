@@ -6,6 +6,7 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # handy aliases
+# https://ostechnix.com/advanced-copy-add-progress-bar-to-cp-and-mv-commands-in-linux/
 alias cp='/usr/local/bin/cp -gR'
 alias mv='/usr/local/bin/mv -g'
 

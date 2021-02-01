@@ -189,10 +189,10 @@ set scrolloff=3
 
 
 "" Colorscheme:
-"colorscheme torte " -> one of the defult colorschema
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark = 'soft' " -> hard/medium/soft
+colorscheme torte " -> one of the defult colorschema
+"colorscheme gruvbox
+"set background=dark
+"let g:gruvbox_contrast_dark = 'soft' " -> hard/medium/soft
 
 
 "" NERDTree (R -> refresh) -> press F3 to open (t -> open in new tab, o -> open here)
@@ -458,3 +458,6 @@ nmap  -  <Plug>(choosewin)
 " Autoclose
 " Fix to let ESC work as espected with Autoclose plugin
 let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}
+
+" For WSL only (Linux in Windows):
+set visualbell

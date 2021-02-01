@@ -60,20 +60,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-    powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION=1
-    POWERLINE_BASH_SELECT=1
-    source /usr/share/powerline/bindings/bash/powerline.sh
-fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export DJANGO_SUPERUSER_USERNAME='admin'
-export DJANGO_SUPERUSER_PASSWORD='admin'
-export DJANGO_SUPERUSER_EMAIL='admin@ascp.pl'
-export JENKINS_ENV='true'

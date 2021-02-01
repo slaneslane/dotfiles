@@ -230,7 +230,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 " file finder mapping
-"let g:ctrlp_map = '<space> e'
+"let g:ctrlp_map = '<leader> e'
 
 
 " ACK options
@@ -258,8 +258,26 @@ nnoremap <C-H> <C-W><C-H>
 " :ls -> list all buffers
 " :b <number> -> change to buffer number
 
-"" GIT
-" Gitgutter:
+"" GIT:
+" Fugitive
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gbl :Gblame<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <leader>gp :Ggrep<Space>
+nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>gps :Dispatch! git push<CR>
+nnoremap <leader>gpl :Dispatch! git pull<CR>
+"
+" Gitgutter
 au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
 noremap <Leader>c :GitGutterToggle<CR>
 let g:gitgutter_enabled = 0

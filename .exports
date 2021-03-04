@@ -14,3 +14,6 @@ export DJANGO_SUPERUSER_USERNAME='admin'
 export DJANGO_SUPERUSER_PASSWORD='admin'
 export DJANGO_SUPERUSER_EMAIL='admin@ascp.pl'
 export JENKINS_ENV='true'
+
+# nodejs:
+export NODE_OPTIONS=--max_old_space_size=4096

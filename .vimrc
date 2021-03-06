@@ -68,7 +68,7 @@ Plugin 'kien/tabman.vim'
 Plugin 'rosenfeld/conque-term'
 
 " Window chooser
-Plugin 't9md/vim-choosewin'
+"Plugin 't9md/vim-choosewin'
 
 " Autoclose
 Plugin 'Townk/vim-autoclose'
@@ -173,8 +173,8 @@ set nowrap
 set fo-=t
 
 " color column of max code line length
-au BufNewFile,BufRead *.py set colorcolumn=120
-highlight ColorColumn ctermbg=233
+"au BufNewFile,BufRead *.py set colorcolumn=120
+"highlight ColorColumn ctermbg=233
 
 
 " set vim leader to space
@@ -219,6 +219,9 @@ set hlsearch
 " clear search results by pressing ENTER
 nnoremap <silent> <CR> :noh<CR><CR>
 
+set wildignore+=.git,
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=*~,*.swp,*.tmp
 
 " CtrlP
 " don't change working directory
@@ -230,7 +233,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$',
   \ }
 " file finder mapping
-"let g:ctrlp_map = '<leader> e'
+let g:ctrlp_show_hidden = 1
 
 
 " ACK options
@@ -281,7 +284,7 @@ nnoremap <leader>gpl :Dispatch! git pull<CR>
 au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
 noremap <Leader>c :GitGutterToggle<CR>
 let g:gitgutter_enabled = 0
-let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_lines = 0
 " You can jump between hunks with [c and ]c.
 " You can preview hunks with <leader>hp
 " You can stage hunks with <leader>hs
@@ -366,7 +369,7 @@ highlight link Flake8_PyFlake    WarningMsg
 " Autopep8 (pip install --user autopep8) -> press F8 to do the fix (or on save)
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 " auto correct on every save
-let g:autopep8_on_save = 1
+"let g:autopep8_on_save = 1
 " better don't show if works on every save
 let g:autopep8_disable_show_diff=0
 " Do not fix these errors/warnings (default: E226,E24,W6)

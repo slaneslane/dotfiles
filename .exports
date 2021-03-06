@@ -17,3 +17,9 @@ export JENKINS_ENV='true'
 
 # nodejs:
 export NODE_OPTIONS=--max_old_space_size=4096
+
+# ascp:
+export DJANGO_SECRET_KEY='zy41h_wv9y=_e-aq4xw04#yr3(cf@7n8&-r1u19*+0w+6+n*s9'
+export DJANGO_DB_PASS_URL=mysql://ascp:ascp@127.0.0.1:3306/ascp_ext
+export DJANGO_DB_URL=mysql://ascp:ascp@127.0.0.1:3306/ascp
+export DJANGO_DB_URL=mysql://ascp:ascp@127.0.0.1:3306/ucubes

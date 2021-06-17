@@ -146,8 +146,10 @@ set encoding=utf-8
 ca w!! w !sudo tee "%"
 
 " better copy-paste (F2)
-set pastetoggle=<F2>
-set clipboard=unnamed
+"set pastetoggle=<F2>
+"set clipboard=unnamed
+" eventually:
+" https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
 
 " always show status bar
 set ls=2
@@ -260,6 +262,17 @@ nnoremap <C-H> <C-W><C-H>
 " Buffers:
 " :ls -> list all buffers
 " :b <number> -> change to buffer number
+
+"" JSON Formatting:
+" using python
+"nnoremap <leader>jf :%!python -m json.tool<CR>
+" using jq -> require installed sudo apt install jq (which is ASCII safe)
+nnoremap <leader>jf :%!jq .<CR>
+
+"" XML Formatting:
+" using xmllint (sudo apt install libxml)
+" for using: gg=G
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 "" GIT:
 " Fugitive

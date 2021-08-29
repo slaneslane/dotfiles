@@ -226,13 +226,14 @@ set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=*~,*.swp,*.tmp
 
 " CtrlP
+" HINT: for refreshing the files structure press F5 in CtrlP mode!
 " don't change working directory
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 30
 " don't show those file types
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules)$',
-  \ 'file': '\.pyc$\|\.pyo$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|\.pytest_cache|htmlcov)$',
+  \ 'file': '\.pyc$\|\.pyo$\|\.py,cover$',
   \ }
 " file finder mapping
 let g:ctrlp_show_hidden = 1
@@ -402,8 +403,8 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Jedi-vim (python only)
 let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#popup_select_first = 1
 let g:jedi#show_call_signatures = 1
 
 let g:jedi#goto_command = "<leader>d"

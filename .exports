@@ -5,22 +5,22 @@ export POWERLINE_COMMAND=powerline
 export POWERLINE_CONFIG_COMMAND=powerline-config
 
 # pyenv:
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init --path)"
 
 # django:
-export DJANGO_SUPERUSER_USERNAME='admin'
-export DJANGO_SUPERUSER_PASSWORD='admin'
-export DJANGO_SUPERUSER_EMAIL='admin@ascp.pl'
-export JENKINS_ENV='true'
+#export DJANGO_SUPERUSER_USERNAME='admin'
+#export DJANGO_SUPERUSER_PASSWORD='admin'
+#export DJANGO_SUPERUSER_EMAIL='admin@ascp.pl'
+#export JENKINS_ENV='true'
 
 # nodejs:
 #export NODE_OPTIONS=--max_old_space_size=4096
 
 # ascp:
-export DJANGO_SECRET_KEY='zy41h_wv9y=_e-aq4xw04#yr3(cf@7n8&-r1u19*+0w+6+n*s9'
-export DJANGO_DB_URL=mysql://ascp:ascp@localhost:3306/ascp
-export DJANGO_DB_PASS_URL=mysql://ascp:ascp@localhost:3306/ascp_ext
-export DJANGO_DB_UCUBES_URL=mysql://ascp:ascp@localhost:3306/ucubes
-export DJANGO_SETTINGS_PATH=/home/vagrant/projects/ascp_db_bckp/configuration.ini
+#export DJANGO_SECRET_KEY='zy41h_wv9y=_e-aq4xw04#yr3(cf@7n8&-r1u19*+0w+6+n*s9'
+#export DJANGO_DB_URL=mysql://ascp:ascp@localhost:3306/ascp
+#export DJANGO_DB_PASS_URL=mysql://ascp:ascp@localhost:3306/ascp_ext
+#export DJANGO_DB_UCUBES_URL=mysql://ascp:ascp@localhost:3306/ucubes
+#export DJANGO_SETTINGS_PATH=/home/vagrant/projects/ascp_db_bckp/configuration.ini

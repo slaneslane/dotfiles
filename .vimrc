@@ -94,6 +94,8 @@ Plugin 'lilydjwg/colorizer'
 "Plugin 'vim-scripts/matchit.zip'
 Plugin 'https://github.com/adelarsq/vim-matchit'
 
+" YAML formatter (https://vimawesme.com/plugin/coc-yaml)
+Plugin 'neoclide/coc-yaml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

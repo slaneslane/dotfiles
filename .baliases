@@ -39,26 +39,18 @@ alias py='python'
 
 # django related aliases:
 alias drs='python manage.py runserver'
-#alias dt='python manage.py test'
 alias dmm='python manage.py makemigrations'
 alias dm='python manage.py migrate'
 
 # virtualenv related aliases:
-alias va='source ~/projects/ascp/venv/bin/activate'
-alias val='va && la'
+#alias va='source ~/projects/SOME_PROJECT_NAME/venv/bin/activate'
+#alias val='va && la'
 alias vd='deactivate'
 #alias pes='pipenv shell'
 #alias per='pipenv run'
 # create virtualenv & upgrade pip & activate & list directory:
 alias vcal='python -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
 alias vcal2='python2.7 -m venv venv && va && pip install --upgrade pip && pip install --user --upgrade setuptools && la'
-
-# pipenv 3.6 to 3.8 aliases for ascp:
-#alias p36='cd ~/ascp && find . -type f -name Pipfile | xargs sed -i "s/python_version = \"3.8\"/python_version = \"3.6\"/" && sed -i "s/\"3.8\"/\"3.6\"/" devops/scripts/prepare_pipenv.py'
-#alias p38='cd ~/ascp && find . -type f -name Pipfile | xargs sed -i "s/python_version = \"3.6\"/python_version = \"3.8\"/" && sed -i "s/\"3.6\"/\"3.8\"/" devops/scripts/prepare_pipenv.py'
-
-# pytest coverage:
-alias rmcov='find . -type f -name "*,cover" | xargs rm'
 
 # git related aliases:
 alias gk='gitk'
@@ -70,6 +62,7 @@ alias gcm='git commit'
 alias gpl='git pull'
 alias gps='git push'
 alias glg='git log --oneline --graph --decorate --all'
+
 # git stash related aliases:
 alias gsl='git stash list'
 alias gss='git stash save'
@@ -107,30 +100,15 @@ alias ff='find . -type f -print0 | xargs -0 grep -l'
 # find and remove all __pycache__ *.pyc and *.pyo files:
 alias rmpyc='find . | egrep "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf' 
 
+# pytest coverage:
+alias rmcov='find . -type f -name "*,cover" | xargs rm'
+
 # Udemy:
 alias udemy='cd ~/projects/nauka/udemy/'
 
-# TTAS/ASCP:
 # jenkins / test machine:
-alias sshtest="ssh ascp@192.168.58.117"
-alias dbjen="mysql --host=192.168.58.117 --protocol=tcp --port=3306 --u=root --p"
-# basic rest -> EDS connection:
-alias br1="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3050 --user admin"
-alias br2="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3053 --user admin"
-alias br3="cd ~/ascp/services/rest_webapi && pipenv run python basic_rest.py --url http://159.65.226.224:43080/eds.wsdl --port 3055 --user admin"
-# backend
-alias dj="cd ~/projects/ascp/server && la && gs && gb"
-alias mig="cd ~/projects/ascp/server && dm"
-alias as="cd ~/projects/ascp/server && drs"
-alias ucb="cd ~/projects/ascp/services/ucubes/dist && drs"
-# frontend:
-alias web="cd ~/projects/ascp/web/src && la && gs && gb"
-alias aw="cd ~/projects/ascp/web/src && npm start"
-# redis:
-alias red="sudo docker run -p 6379:6379 -d redis:2.8 --requirepass Admin123!"
+#alias dbjen="mysql --host=IP_HOST --protocol=tcp --port=3306 --u=root --p"
 
-#find . -type f -name Pipfile | xargs sed -i 's/python_version = "3.6"/python_version = "3.8"/'
-#sed -i 's/"3.6"/"3.8"/' devops/scripts/prepare_pipenv.py
-
-alias ascp="as 192.168.1.111:8000"
-alias cube="ucb 192.168.1.111:8880"
+# K8s
+alias k=kubectl
+complete -F __start_kubectl k

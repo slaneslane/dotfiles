@@ -66,3 +66,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 export DOCKER_HOST=tcp://localhost:2375
+
+# https://www.cyberciti.biz/faq/add-bash-auto-completion-in-ubuntu-linux/
+source /etc/profile.d/bash_completion.sh
+# https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash
+source <(kubectl completion bash)

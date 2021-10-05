@@ -24,3 +24,15 @@ export POWERLINE_CONFIG_COMMAND=powerline-config
 #export DJANGO_DB_PASS_URL=mysql://ascp:ascp@localhost:3306/ascp_ext
 #export DJANGO_DB_UCUBES_URL=mysql://ascp:ascp@localhost:3306/ucubes
 #export DJANGO_SETTINGS_PATH=/home/vagrant/projects/ascp_db_bckp/configuration.ini
+
+# Node version manager:
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Docker host for WSL
+export DOCKER_HOST=tcp://localhost:2375
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$GOBIN"

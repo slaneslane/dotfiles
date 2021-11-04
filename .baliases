@@ -43,7 +43,7 @@ alias dmm='python manage.py makemigrations'
 alias dm='python manage.py migrate'
 
 # virtualenv related aliases:
-#alias va='source ~/projects/SOME_PROJECT_NAME/venv/bin/activate'
+alias va='source venv/bin/activate'
 #alias val='va && la'
 alias vd='deactivate'
 #alias pes='pipenv shell'

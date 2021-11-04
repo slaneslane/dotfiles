@@ -64,3 +64,4 @@ fi
 source /etc/profile.d/bash_completion.sh
 # https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash
 source <(kubectl completion bash)
+. "$HOME/.cargo/env"

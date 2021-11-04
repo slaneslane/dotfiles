@@ -36,3 +36,6 @@ export DOCKER_HOST=tcp://localhost:2375
 # Golang
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$GOBIN"
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin

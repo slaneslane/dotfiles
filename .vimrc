@@ -284,7 +284,7 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -v -q<CR>
 nnoremap <leader>gt :Gcommit -v -q %:p<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gbl :Gblame<CR>
+nnoremap <leader>gbl :Git blame<CR>
 nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gw :Gwrite<CR><CR>

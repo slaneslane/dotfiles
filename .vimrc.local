@@ -1,0 +1,181 @@
+" BACKUP YOUR WORK IN VIM EDITOR:
+" better backup, swap and undos storage for vim (nvim has nice ones by
+" default)
+set directory=~/.vim/dirs/tmp     " directory to place swap files in
+set backup                        " make backup files
+set backupdir=~/.vim/dirs/backups " where to put backup files
+set undofile                      " persistent undos - undo after you re-open the file
+set undodir=~/.vim/dirs/undos
+set viminfo+=n~/.vim/dirs/viminfo
+" create needed directories if they don't exist
+if !isdirectory(&backupdir)
+call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+call mkdir(&undodir, "p")
+endif
+
+
+" set vim leader to space
+map <Space> <Leader>
+
+" save as sudo
+ca w!! w !sudo tee "%"
+
+set background=light
+
+" clear search results by pressing ENTER
+nnoremap <silent> <CR> :noh<CR><CR>
+
+" grep.vim
+let Grep_Skip_Files = '*.log *.db *.pyc *.pyo *.bmp *.gif *.ico *.jpg *.png*~ *.swp *.tmp *.py,cover'
+let Grep_Skip_Dirs = '.git node_modules .svn pytest_cache htmlcov'
+
+" NerdTree
+set wildignore+=.git
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=*~,*.swp,*.tmp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+
+" ACK options
+nnoremap <leader>a <Esc>:Ack!
+"nnoremap <leader>ra :Ack <cword><CR>
+let g:ack_autoclose = 1
+
+" Buffers:
+" :ls -> list all buffers
+" :b <number> -> change to buffer number
+
+" Gitgutter
+" You can jump between hunks with [c and ]c.
+" You can preview hunks with <leader>hp
+" You can stage hunks with <leader>hs
+" You can undo hunks with <leader>hu
+au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
+noremap <Leader>c :GitGutterToggle<CR>
+let g:gitgutter_enabled = 0
+let g:gitgutter_highlight_lines = 0
+
+
+" Flake8 (pip install flake8) -> press F7 to do the check
+" or always check
+"autocmd BufWritePost *.py call Flake8()
+
+let g:flake8_error_marker='EE'     " set error marker to 'EE'
+let g:flake8_warning_marker='WW'   " set warning marker to 'WW'
+"let g:flake8_pyflake_marker=''     " disable PyFlakes warnings
+"let g:flake8_complexity_marker=''  " disable McCabe complexity warnings
+"let g:flake8_naming_marker=''      " disable naming warnings
+
+" to use colors defined in the colorscheme
+highlight link Flake8_Error      Error
+highlight link Flake8_Warning    WarningMsg
+highlight link Flake8_Complexity WarningMsg
+highlight link Flake8_Naming     WarningMsg
+highlight link Flake8_PyFlake    WarningMsg
+
+" put the following into your ~/.config/flake8 file:
+" [flake8]
+" max-line-length = 120
+
+
+" Autopep8 (pip install --user autopep8) -> press F8 to do the fix (or on save)
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+" auto correct on every save
+"let g:autopep8_on_save = 1
+" better don't show if works on every save
+let g:autopep8_disable_show_diff=0
+" Do not fix these errors/warnings (default: E226,E24,W6)
+"let g:autopep8_ignore="E501,W293"
+" Fix only these errors/warnings (e.g. E4,W)
+"let g:autopep8_select="E501,W293"
+" set max line length to 120
+let g:autopep8_max_line_length=119
+
+
+
+" Jedi-vim (python only)
+let g:jedi#use_splits_not_buffers = "left"
+"let g:jedi#popup_on_dot = 1
+"let g:jedi#popup_select_first = 1
+"let g:jedi#show_call_signatures = 1
+
+"let g:jedi#goto_command = "<leader>d"
+"let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+"let g:jedi#goto_definitions_command = ""
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#completions_command = "<C-Space>"
+"let g:jedi#rename_command = "<leader>r"
+
+
+" Add the virtualenv's site-packages to vim path
+if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+endif
+
+
+"" PYTHON SNIPPETS:
+" Ability to add python breakpoints
+" (I use ipdb, but you can change it to whatever tool you use for debugging)
+au FileType python map <silent> <leader>p Oimport pdb; pdb.set_trace()<esc>
+au FileType python map <silent> <leader>w Oimport wdb; wdb.set_trace()<esc>
+au FileType python map <silent> <leader>b Oimport ipdb; ipdb.set_trace()<esc>
+
+
+"" MOUSE:
+" Mouse support
+set mouse=a
+" when scrolling, keep cursor 3 lines away from screen border
+set scrolloff=3
+
+
+"" LINES NUMBERING:
+" turn relative line numbers on
+set number relativenumber
+" automatic relative line numbers on
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+
+"" JSON Formatting:
+" using python
+"nnoremap <leader>jf :%!python -m json.tool<CR>
+" using jq -> require installed sudo apt install jq (which is ASCII safe)
+nnoremap <leader>jf :%!jq .<CR>
+
+
+"" XML Formatting:
+" using xmllint (sudo apt install libxml)
+" for using: gg=G
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+
+" Tasklist
+" show pending tasks list
+map <F5> :TaskList<CR>
+
+
+" Windows Chooser invoke with '-'
+nmap  -  <Plug>(choosewin)
+
+
+" Autoclose
+" Fix to let ESC work as espected with Autoclose plugin
+let g:AutoClosePumvisible = {"ENTER": "\<C-Y>", "ESC": "\<ESC>"}

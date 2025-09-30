@@ -322,3 +322,74 @@ Możesz się ponownie podpiąć z innego hosta, jeśli masz dostęp do tego same
 | hping3     | hping3               | hping (EPEL repo)      |
 
 ---
+
+## 🔐 SSH Keys (klucze SSH)
+
+```bash
+# Generowanie klucza RSA (bezpieczny, szeroko wspierany)
+ssh-keygen -t rsa -b 4096 -C "twoj_email@example.com"
+# Generowanie klucza ed25519 (krótszy, szybki i nowoczesny)
+ssh-keygen -t ed25519 -C "twoj_email@example.com"
+```
+
+**Komentarz:** `ed25519` jest rekomendowany gdy systemy to obsługują; `rsa 4096` jest dobrą alternatywą dla kompatybilności.
+
+### Kopiowanie klucza na serwer
+
+```bash
+# najprościej (pakiet: openssh-client zapewnia ssh-copy-id)
+ssh-copy-id user@host
+
+# ręcznie: skopiuj zawartość ~/.ssh/id_rsa.pub i dopisz na serwerze:
+ssh user@host 'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+
+# upewnij się w katalogu docelowym:
+ssh user@host 'chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys'
+```
+
+**Komentarz:** na serwerze musi być zainstalowany `openssh-server` (Debian/Ubuntu: `openssh-server`, RHEL/Fedora: `openssh-server`/service `sshd`).
+
+### Używanie ssh-agent (przechowywanie klucza w pamięci)
+
+```bash
+# uruchom ssh-agent i dodaj klucz (poprosi o passphrase, jeśli ustawiony)
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+# lub dla ed25519
+ssh-add ~/.ssh/id_ed25519
+```
+
+**Tip:** dodaj `ssh-add` do startu środowiska GUI/TTY jeśli chcesz nie wpisywać passphrase za każdym razem.
+
+### Uprawnienia i bezpieczeństwo
+
+- `~/.ssh` powinien mieć uprawnienia `700`  
+- `~/.ssh/authorized_keys` powinien mieć uprawnienia `600`  
+- jeśli zmieniasz uprawnienia inaczej, `sshd` może odrzucić logowanie kluczami
+
+### Wyłączenie logowania hasłem (opcjonalnie, na serwerze)
+
+Edytuj `/etc/ssh/sshd_config` i ustaw:
+```
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+```
+Następnie zrestartuj serwis `sshd` (np. `sudo systemctl restart sshd`).  
+**UWAGA:** upewnij się, że masz działający dostęp kluczowy przed wyłączeniem haseł, aby nie zablokować siebie.
+
+### Dodatki: wiele kluczy / niestandardowe porty / pliki konfiguracyjne
+
+- Możesz mieć wiele par kluczy i wybrać którą użyć:  
+  `ssh -i ~/.ssh/id_ed25519 user@host -p 2222`
+- Ułatw to wpisami w `~/.ssh/config`:
+  ```
+  Host myserver
+    HostName host.example.com
+    User user
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519
+  ```
+
+**Komentarz:** większość klientów SSH (Debian/Ubuntu/RHEL) dostarczana jest przez pakiet `openssh-client`; serwer przez `openssh-server`.
+
+---

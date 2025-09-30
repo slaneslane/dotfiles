@@ -27,8 +27,15 @@ Komentarze dodane tam, gdzie coś może być nieoczywiste.
   - [ufw](#ufw-ubuntudebian)  
   - [firewalld](#firewalld-rhelcentosfedora)  
 - [🌐 Narzędzia sieciowe](#-narzędzia-sieciowe)  
+- [📌 Pakiety (Debian / RHEL)](#-pakiety-debian--rhel)
 - [🖥️ Tmux – zarządzanie sesjami](#️-tmux--zarządzanie-sesjami)  
-- [📌 Pakiety (Debian / RHEL)](#-pakiety-debian--rhel)  
+- [🔐 SSH Keys](#-ssh-keys-klucze-ssh)
+- [🕒 Cron i planowanie zadań](#-cron-i-planowanie-zadań)
+- [📊 Podstawowe komendy diagnostyczne / info o systemie](#-podstawowe-komendy-diagnostyczne--info-o-systemie)
+- [👤 Zarządzanie użytkownikami i sesjami](#-zarządzanie-użytkownikami-i-sesjami)
+- [🔒 SELinux / AppArmor](#-selinux--apparmor)
+- [🔄 rsync vs cp](#-rsync-vs-cp)
+- [🛠️ Inne przydatne narzędzia administracyjne](#-inne-przydatne-narzędzia-administracyjne)
 
 ---
 
@@ -284,6 +291,21 @@ tshark -i eth0            # Wireshark CLI (pakiet: wireshark)
 
 ---
 
+## 📌 Pakiety (Debian / RHEL)
+
+| Narzędzie  | Debian/Ubuntu        | RHEL/Fedora            |
+|------------|----------------------|------------------------|
+| ss         | iproute2             | iproute                |
+| netstat    | net-tools            | net-tools              |
+| nmap       | nmap                 | nmap                   |
+| wireshark  | wireshark            | wireshark, wireshark-cli|
+| tshark     | wireshark            | wireshark-cli          |
+| tcpdump    | tcpdump              | tcpdump                |
+| lsof       | lsof                 | lsof                   |
+| hping3     | hping3               | hping (EPEL repo)      |
+
+---
+
 ## 🖥️ Tmux – zarządzanie sesjami
 
 ```bash
@@ -305,21 +327,6 @@ Ctrl+b n/p                 # następne/poprzednie okno
 
 💡 Sesje w tmuxie działają dalej na serwerze nawet po rozłączeniu SSH.  
 Możesz się ponownie podpiąć z innego hosta, jeśli masz dostęp do tego samego serwera.
-
----
-
-## 📌 Pakiety (Debian / RHEL)
-
-| Narzędzie  | Debian/Ubuntu        | RHEL/Fedora            |
-|------------|----------------------|------------------------|
-| ss         | iproute2             | iproute                |
-| netstat    | net-tools            | net-tools              |
-| nmap       | nmap                 | nmap                   |
-| wireshark  | wireshark            | wireshark, wireshark-cli|
-| tshark     | wireshark            | wireshark-cli          |
-| tcpdump    | tcpdump              | tcpdump                |
-| lsof       | lsof                 | lsof                   |
-| hping3     | hping3               | hping (EPEL repo)      |
 
 ---
 
@@ -393,3 +400,85 @@ Następnie zrestartuj serwis `sshd` (np. `sudo systemctl restart sshd`).
 **Komentarz:** większość klientów SSH (Debian/Ubuntu/RHEL) dostarczana jest przez pakiet `openssh-client`; serwer przez `openssh-server`.
 
 ---
+
+## 🕒 Cron i planowanie zadań
+
+```bash
+crontab -l
+crontab -e
+sudo systemctl list-timers
+* * * * * /path/to/script.sh | logger -t mycron
+```
+
+---
+
+## 📊 Podstawowe komendy diagnostyczne / info o systemie
+
+```bash
+uptime
+uname -a
+whoami
+id
+hostname
+hostnamectl
+date
+cal
+w
+```
+
+---
+
+## 👤 Zarządzanie użytkownikami i sesjami
+
+```bash
+sudo adduser user
+sudo usermod -aG sudo user
+sudo passwd user
+sudo deluser user
+groups user
+getent group
+loginctl list-sessions
+loginctl show-session <ID>
+sudo loginctl terminate-session 3
+```
+
+---
+
+## 🔒 SELinux / AppArmor
+
+```bash
+sestatus
+getenforce
+setenforce 0
+setenforce 1
+ls -Z /var/www/html
+chcon -R -t httpd_sys_content_t /var/www/html
+aa-status
+```
+
+---
+
+## 🔄 rsync vs cp
+
+```bash
+rsync -avz src/ dest/
+rsync -avz --progress src/ dest/
+rsync -avz --ignore-existing src/ dest/
+cp -a src/ dest/
+cp -r src/ dest/
+```
+
+---
+
+## 🛠️ Inne przydatne narzedzia administracyjne
+
+```bash
+df -h
+du -sh dir/
+free -h
+top / htop
+iostat -xz 1
+vmstat 1
+dmesg | tail
+journalctl -xe
+```
